@@ -1,33 +1,1186 @@
-<html> 
+<!DOCTYPE html>
+<html lang="nl">
+
 <head>
+    <meta charset="UTF-8">
+
+    <!-- Zorgt ervoor dat de website ook goed werkt op telefoons -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mijn ICT Wereld</title>
+
+    <!--
+        Alle CSS staat hieronder in hetzelfde bestand.
+        Hierdoor hebben we geen apart style.css-bestand nodig.
+    -->
+
+    <style>
+
+        /* ==============================
+           ALGEMENE OPMAAK
+           ============================== */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f3f6fc;
+            color: #18243b;
+            line-height: 1.7;
+        }
+
+        /* ==============================
+           NAVIGATIEMENU
+           ============================== */
+
+        header {
+            background: #0b1930;
+            color: white;
+            padding: 18px 7%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .logo {
+            color: #55d6ff;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        nav ul li {
+            position: relative;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #55d6ff;
+        }
+
+        /* ==============================
+           DROPDOWNMENU
+           ============================== */
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 30px;
+            left: 0;
+            background: #142945;
+            min-width: 220px;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 10px;
+        }
+
+        /* Dropdown verschijnt wanneer je er met de muis overheen gaat */
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* ==============================
+           HOMEPAGE / HERO
+           ============================== */
+
+        .hero {
+            background:
+                linear-gradient(
+                    rgba(7, 25, 48, 0.85),
+                    rgba(45, 30, 100, 0.85)
+                ),
+                url("https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=1600&q=80");
+
+            background-size: cover;
+            background-position: center;
+
+            color: white;
+            text-align: center;
+            padding: 110px 20px;
+        }
+
+        .hero h1 {
+            font-size: 55px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #55d6ff;
+        }
+
+        .hero p {
+            max-width: 750px;
+            margin: auto;
+            font-size: 19px;
+        }
+
+        .button {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 25px;
+            background: #13a5f5;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            background: #087bc1;
+            transform: translateY(-2px);
+        }
+
+        /* ==============================
+           ALGEMENE CONTENT
+           ============================== */
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 65px 25px;
+        }
+
+        .container h2 {
+            color: #174d83;
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .container h3 {
+            color: #174d83;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        .container > img {
+            width: 100%;
+            max-height: 450px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+
+        /* ==============================
+           KAARTEN
+           ============================== */
+
+        .cards {
+            display: grid;
+            grid-template-columns:
+                repeat(auto-fit, minmax(210px, 1fr));
+
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+
+            box-shadow:
+                0 5px 20px rgba(20, 41, 69, 0.1);
+
+            border-top: 5px solid #13a5f5;
+
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            margin-top: 0;
+        }
+
+        .card a {
+            color: #087bc1;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        /* ==============================
+           INFORMATIEBLOK
+           ============================== */
+
+        .info {
+            background: #e3f5ff;
+            border-left: 5px solid #13a5f5;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 8px;
+        }
+
+        /* ==============================
+           VIDEO
+           ============================== */
+
+        .media {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 30px;
+            box-shadow: 0 5px 20px rgba(20, 41, 69, 0.1);
+        }
+
+        .video {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border: none;
+            border-radius: 12px;
+            margin-top: 15px;
+        }
+
+        /* ==============================
+           LIJSTEN
+           ============================== */
+
+        .container ul {
+            margin-left: 25px;
+        }
+
+        /* ==============================
+           BINARY BONANZA
+           ============================== */
+
+        .binary-link img {
+            transition: 0.3s;
+        }
+
+        .binary-link img:hover {
+            transform: scale(1.02);
+            opacity: 0.9;
+        }
+
+        /* ==============================
+           FOOTER
+           ============================== */
+
+        footer {
+            background: #0b1930;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+
+        footer p {
+            margin: 5px;
+        }
+
+        /* ==============================
+           MOBIELE VERSIE
+           ============================== */
+
+        @media (max-width: 700px) {
+
+            header {
+                padding: 15px;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                gap: 12px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero {
+                padding: 70px 20px;
+            }
+
+            .hero h1 {
+                font-size: 38px;
+            }
+
+            .dropdown-content {
+                position: absolute;
+            }
+
+            .container {
+                padding: 45px 18px;
+            }
+
+        }
+
+    </style>
 </head>
+
+
 <body>
-  
-  <h1> Dit is Header 1 </h1>
-  <h2> Dit is Header 2 </h2>
-  <h3> Dit is Header 3 </h3>
-  <h4> Dit is Header 4 </h4>
-  <h5> Dit is Header 5 </h5>
-  <h6> Dit is Header 6 </h6>
-  <h2> Lijst maken </h2>
-  Je kunt allerlei opmaak toepassen, zoals:
-  <ul>
-    <li>vet;</li>
-    <li>cursief;</li>
-    <li> onderstreept;</li>
-    <li>tekstkleur</li>
-    <li>tekstgrootte;</li>
-    <li>uitlijning</li>
-    </ul>
-   <h2> Lijst maken </h2>
-  Je kunt allerlei opmaak toepassen, zoals:
-  <ol>
-    <li>vet;</li>
-    <li>cursief;</li>
-    <li> onderstreept;</li>
-    <li>tekstkleur</li>
-    <li>tekstgrootte;</li>
-    <li>uitlijning</li>
-    </ol>
+
+
+<!-- ==================================================
+     NAVIGATIEMENU
+     ================================================== -->
+
+<header>
+
+    <nav>
+
+        <!-- Naam/logo van de website -->
+        <a href="#home" class="logo">
+            &lt;/&gt; Mijn ICT Wereld
+        </a>
+
+        <ul>
+
+            <!-- Link naar de homepage -->
+            <li>
+                <a href="#home">Home</a>
+            </li>
+
+            <!-- Dropdownmenu -->
+            <li class="dropdown">
+
+                <a href="#theorie">
+                    Theorie ▾
+                </a>
+
+                <div class="dropdown-content">
+
+                    <a href="#ivo">
+                        Invoer - Verwerking - Uitvoer
+                    </a>
+
+                    <a href="#binair">
+                        Binair stelsel
+                    </a>
+
+                    <a href="#kleuren">
+                        Kleurmodellen
+                    </a>
+
+                    <a href="#compressie">
+                        Compressie
+                    </a>
+
+                </div>
+
+            </li>
+
+            <!-- Link naar AI -->
+            <li>
+                <a href="#ai">AI</a>
+            </li>
+
+            <!-- Link naar mobiele telefoon -->
+            <li>
+                <a href="#mobiel">Mijn mobiel</a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+</header>
+
+
+<!-- ==================================================
+     HOMEPAGE
+     ================================================== -->
+
+<section class="hero" id="home">
+
+    <h1>
+        Hallo, ik ben <span>[Jouw naam]</span>!
+    </h1>
+
+    <p>
+        Welkom op mijn ICT-website!
+        Ik ben [jouw leeftijd] jaar oud en ik houd van
+        [jouw hobby's].
+        Op deze website vertel ik over ICT, computers,
+        digitale afbeeldingen, compressie en kunstmatige
+        intelligentie.
+    </p>
+
+    <a href="#theorie" class="button">
+        Ontdek de website
+    </a>
+
+</section>
+
+
+<!-- ==================================================
+     OVERZICHT
+     ================================================== -->
+
+<section class="container" id="theorie">
+
+    <h2>Mijn ICT-onderwerpen</h2>
+
+    <p>
+        Op deze website leg ik verschillende onderwerpen
+        uit die met ICT te maken hebben.
+    </p>
+
+
+    <div class="cards">
+
+        <div class="card">
+
+            <h3>🖥️ Invoer - Verwerking - Uitvoer</h3>
+
+            <p>
+                Hoe krijgt een computer informatie binnen
+                en wat doet hij ermee?
+            </p>
+
+            <a href="#ivo">
+                Lees meer →
+            </a>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>🔢 Binair stelsel</h3>
+
+            <p>
+                Computers werken met nullen en enen.
+                Maar waarom?
+            </p>
+
+            <a href="#binair">
+                Lees meer →
+            </a>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>🎨 Kleurmodellen</h3>
+
+            <p>
+                Hoe kan een computer miljoenen verschillende
+                kleuren weergeven?
+            </p>
+
+            <a href="#kleuren">
+                Lees meer →
+            </a>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>🖼️ Compressie</h3>
+
+            <p>
+                Wat is het verschil tussen bitmap en vector?
+            </p>
+
+            <a href="#compressie">
+                Lees meer →
+            </a>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>🤖 AI</h3>
+
+            <p>
+                Wat is kunstmatige intelligentie en waarvoor
+                kun je het gebruiken?
+            </p>
+
+            <a href="#ai">
+                Lees meer →
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ==================================================
+     1. INVOER - VERWERKING - UITVOER
+     ================================================== -->
+
+<section class="container" id="ivo">
+
+    <h2>
+        1. Invoer - Verwerking - Uitvoer
+    </h2>
+
+    <img
+        src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80"
+        alt="Elektronische onderdelen van een computer"
+    >
+
+    <p>
+        Een computer werkt met drie belangrijke stappen:
+        <strong>invoer, verwerking en uitvoer</strong>.
+    </p>
+
+    <div class="cards">
+
+        <div class="card">
+
+            <h3>1. Invoer</h3>
+
+            <p>
+                Bij invoer geef je informatie aan een computer.
+                Dit kan bijvoorbeeld met een toetsenbord,
+                muis, microfoon of camera.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>2. Verwerking</h3>
+
+            <p>
+                De computer verwerkt de ingevoerde informatie.
+                De processor voert berekeningen en opdrachten uit.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>3. Uitvoer</h3>
+
+            <p>
+                Daarna geeft de computer een resultaat.
+                Bijvoorbeeld een afbeelding op het scherm
+                of geluid uit een speaker.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="info">
+
+        <strong>Voorbeeld:</strong>
+
+        <p>
+            Als je op je toetsenbord
+            <strong>2 + 3</strong> typt, is dat de invoer.
+            De computer rekent dit uit als verwerking.
+            Vervolgens verschijnt <strong>5</strong> op het
+            scherm. Dat is de uitvoer.
+        </p>
+
+    </div>
+
+
+    <div class="media">
+
+        <h3>YouTube-video</h3>
+
+        <p>
+            Ik heb een korte video over input, processing
+            en output gekozen omdat je daarin goed kunt zien
+            welke stappen een computer doorloopt.
+        </p>
+
+        <!--
+            VERVANG VIDEO_ID door de ID van een video die
+            je zelf hebt bekeken.
+
+            Bijvoorbeeld:
+            https://www.youtube.com/watch?v=ABC123
+
+            wordt:
+            https://www.youtube-nocookie.com/embed/ABC123
+        -->
+
+        <iframe
+            class="video"
+            src="https://www.youtube-nocookie.com/embed/VIDEO_ID_INVOER"
+            title="Video over invoer, verwerking en uitvoer"
+            allowfullscreen>
+        </iframe>
+
+    </div>
+
+</section>
+
+
+<!-- ==================================================
+     2. BINAIR STELSEL
+     ================================================== -->
+
+<section class="container" id="binair">
+
+    <h2>
+        2. Het binaire stelsel
+    </h2>
+
+    <img
+        src="https://images.unsplash.com/photo-1510511459019-5dda7724fd87?auto=format&fit=crop&w=1200&q=80"
+        alt="Computer en digitale technologie"
+    >
+
+    <p>
+        Computers werken met het
+        <strong>binaire stelsel</strong>.
+        In plaats van tien cijfers gebruikt een computer
+        maar twee cijfers:
+        <strong>0 en 1</strong>.
+    </p>
+
+    <p>
+        Een 0 of 1 noemen we een <strong>bit</strong>.
+        Acht bits samen vormen één byte.
+    </p>
+
+
+    <div class="info">
+
+        <h3>Voorbeeld</h3>
+
+        <p>
+            Het binaire getal <strong>101</strong> betekent:
+        </p>
+
+        <p>
+            1 × 4 + 0 × 2 + 1 × 1 = 5
+        </p>
+
+        <p>
+            Dus:
+            <strong>101₂ = 5₁₀</strong>
+        </p>
+
+    </div>
+
+
+    <!--
+        Link naar Binary Bonanza.
+        De afbeelding is tegelijkertijd een klikbare link.
+    -->
+
+    <a
+        class="binary-link"
+        href="https://binarybonanza.nl/"
+        target="_blank"
+        rel="noopener"
+    >
+
+        <img
+            src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80"
+            alt="Klik hier voor Binary Bonanza"
+        >
+
+    </a>
+
+    <p>
+        <strong>Binary Bonanza:</strong>
+        klik op de afbeelding hierboven om naar
+        Binary Bonanza te gaan. Hier kun je op een leuke
+        manier meer leren over binaire getallen.
+    </p>
+
+
+    <div class="media">
+
+        <h3>YouTube-video</h3>
+
+        <p>
+            Ik heb een video over het binaire stelsel gekozen
+            omdat het met voorbeelden veel makkelijker wordt
+            om te begrijpen hoe computers met nullen en enen
+            werken.
+        </p>
+
+        <iframe
+            class="video"
+            src="https://www.youtube-nocookie.com/embed/VIDEO_ID_BINAIR"
+            title="Video over het binaire stelsel"
+            allowfullscreen>
+        </iframe>
+
+    </div>
+
+</section>
+
+
+<!-- ==================================================
+     3. KLEURMODELLEN
+     ================================================== -->
+
+<section class="container" id="kleuren">
+
+    <h2>
+        3. Kleurmodellen
+    </h2>
+
+    <img
+        src="https://images.unsplash.com/photo-1507908708918-778587c9e563?auto=format&fit=crop&w=1200&q=80"
+        alt="Kleurrijke verlichting"
+    >
+
+    <p>
+        Een kleurmodel beschrijft hoe digitale kleuren worden
+        gemaakt en weergegeven.
+        Bekende kleurmodellen zijn
+        <strong>RGB, CMYK en HSL</strong>.
+    </p>
+
+
+    <div class="cards">
+
+        <div class="card">
+
+            <h3>🔴 RGB</h3>
+
+            <p>
+                RGB staat voor
+                <strong>Rood, Groen en Blauw</strong>.
+                Schermen gebruiken deze drie kleuren
+                om andere kleuren te maken.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>🖨️ CMYK</h3>
+
+            <p>
+                CMYK staat voor
+                <strong>Cyaan, Magenta, Yellow en Key/Black</strong>.
+                Dit wordt vooral gebruikt bij printers.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>🌈 HSL</h3>
+
+            <p>
+                HSL staat voor
+                <strong>Hue, Saturation en Lightness</strong>.
+                In het Nederlands: kleurtoon, verzadiging
+                en lichtheid.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="info">
+
+        <strong>Wist je dat?</strong>
+
+        <p>
+            Een scherm werkt met licht en gebruikt daarom RGB.
+            Een printer werkt met inkt en gebruikt daarom
+            meestal CMYK.
+        </p>
+
+    </div>
+
+
+    <div class="media">
+
+        <h3>YouTube-video</h3>
+
+        <p>
+            Ik heb een video over RGB en CMYK gekozen omdat
+            je hierin goed kunt zien waarom schermen en printers
+            verschillende kleurmodellen gebruiken.
+        </p>
+
+        <iframe
+            class="video"
+            src="https://www.youtube-nocookie.com/embed/VIDEO_ID_KLEUREN"
+            title="Video over kleurmodellen"
+            allowfullscreen>
+        </iframe>
+
+    </div>
+
+</section>
+
+
+<!-- ==================================================
+     4. COMPRESSIE - BITMAP EN VECTOR
+     ================================================== -->
+
+<section class="container" id="compressie">
+
+    <h2>
+        4. Compressie: Bitmap en Vector
+    </h2>
+
+    <img
+        src="https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=1200&q=80"
+        alt="Grafisch ontwerp op een computer"
+    >
+
+    <p>
+        Compressie betekent dat je een bestand kleiner maakt.
+        Hierdoor neemt het bestand minder opslagruimte in
+        en kan het sneller worden verstuurd.
+    </p>
+
+
+    <div class="cards">
+
+        <div class="card">
+
+            <h3>🟦 Bitmap</h3>
+
+            <p>
+                Een bitmapafbeelding bestaat uit allemaal kleine
+                pixels. Foto's zijn meestal bitmapafbeeldingen.
+            </p>
+
+            <p>
+                Voorbeelden van bestandsformaten zijn
+                <strong>JPG, PNG en GIF</strong>.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>🔷 Vector</h3>
+
+            <p>
+                Een vectorafbeelding bestaat uit lijnen,
+                vormen en wiskundige berekeningen.
+            </p>
+
+            <p>
+                Een vector kan daardoor vaak veel groter worden
+                gemaakt zonder dat de afbeelding onscherp wordt.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="info">
+
+        <strong>Belangrijk verschil:</strong>
+
+        <p>
+            Bij een bitmap bestaat de afbeelding uit pixels.
+            Bij een vector bestaat de afbeelding uit vormen
+            en lijnen.
+        </p>
+
+    </div>
+
+
+    <div class="media">
+
+        <h3>YouTube-video</h3>
+
+        <p>
+            Ik heb een video over bitmap en vector gekozen
+            omdat het verschil met afbeeldingen goed zichtbaar
+            wordt gemaakt. Daardoor begrijp je beter wanneer
+            je welke soort afbeelding gebruikt.
+        </p>
+
+        <iframe
+            class="video"
+            src="https://www.youtube-nocookie.com/embed/VIDEO_ID_COMPRESSIE"
+            title="Video over bitmap en vector"
+            allowfullscreen>
+        </iframe>
+
+    </div>
+
+</section>
+
+
+<!-- ==================================================
+     5. AI
+     ================================================== -->
+
+<section class="container" id="ai">
+
+    <h2>
+        5. Kunstmatige intelligentie (AI)
+    </h2>
+
+    <img
+        src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1200&q=80"
+        alt="Kunstmatige intelligentie"
+    >
+
+    <p>
+        AI staat voor
+        <strong>Artificial Intelligence</strong>,
+        oftewel kunstmatige intelligentie.
+    </p>
+
+    <p>
+        AI is technologie waarmee computers taken kunnen
+        uitvoeren waarvoor normaal gesproken menselijke
+        intelligentie nodig is.
+    </p>
+
+    <p>
+        Denk bijvoorbeeld aan het herkennen van foto's,
+        het begrijpen van taal, vertalen, aanbevelingen
+        en het genereren van tekst of afbeeldingen.
+    </p>
+
+
+    <h3>
+        Waar gebruik ik zelf AI voor?
+    </h3>
+
+    <p>
+        Ik gebruik AI bijvoorbeeld voor
+        <strong>[vul hier jouw eigen voorbeeld in]</strong>.
+        Het kan mij helpen om ideeën te bedenken,
+        moeilijke onderwerpen uit te leggen of te oefenen.
+    </p>
+
+
+    <h3>
+        Leer ik er iets van?
+    </h3>
+
+    <p>
+        Ja. Als ik AI gebruik om iets uit te leggen,
+        probeer ik de uitleg daarna zelf te begrijpen
+        en in mijn eigen woorden te vertellen.
+    </p>
+
+    <p>
+        Ik vind het belangrijk om niet zomaar een antwoord
+        van AI over te nemen. AI kan namelijk fouten maken.
+        Daarom controleer ik belangrijke informatie altijd.
+    </p>
+
+
+    <div class="info">
+
+        <strong>Mijn mening over AI:</strong>
+
+        <p>
+            AI kan een handige hulpmiddel zijn voor school
+            en in het dagelijks leven. Je moet wel zelf
+            blijven nadenken en controleren of de informatie
+            klopt.
+        </p>
+
+    </div>
+
+
+    <div class="media">
+
+        <h3>YouTube-video</h3>
+
+        <p>
+            Ik heb een introductievideo over AI gekozen
+            omdat dit onderwerp voor veel mensen nieuw is.
+            Een video maakt duidelijker wat AI precies is
+            en waar we het tegenkomen.
+        </p>
+
+        <iframe
+            class="video"
+            src="https://www.youtube-nocookie.com/embed/VIDEO_ID_AI"
+            title="Video over kunstmatige intelligentie"
+            allowfullscreen>
+        </iframe>
+
+    </div>
+
+</section>
+
+
+<!-- ==================================================
+     6. MIJN MOBIELE TELEFOON
+     ================================================== -->
+
+<section class="container" id="mobiel">
+
+    <h2>
+        6. AI in mijn mobiele telefoon
+    </h2>
+
+    <img
+        src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=1200&q=80"
+        alt="Smartphone"
+    >
+
+    <p>
+        Ik heb een
+        <strong>[merk en model van jouw telefoon]</strong>.
+    </p>
+
+    <p>
+        Tegenwoordig zit er op veel smartphones AI.
+        AI kan bijvoorbeeld worden gebruikt voor de camera,
+        spraakherkenning, tekstvoorspellingen en beveiliging.
+    </p>
+
+
+    <div class="cards">
+
+        <div class="card">
+
+            <h3>📷 Camera</h3>
+
+            <p>
+                AI kan herkennen wat er op een foto staat
+                en de instellingen van de camera aanpassen.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>🎤 Spraak</h3>
+
+            <p>
+                Spraakherkenning kan gesproken woorden
+                omzetten naar tekst.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>⌨️ Toetsenbord</h3>
+
+            <p>
+                Een toetsenbord kan voorspellen welk woord
+                je waarschijnlijk hierna wilt typen.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>🔐 Beveiliging</h3>
+
+            <p>
+                Sommige telefoons gebruiken technologie
+                om een gezicht of vingerafdruk te herkennen.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="info">
+
+        <strong>Mijn telefoon:</strong>
+
+        <p>
+            Op mijn eigen telefoon gebruik ik AI bijvoorbeeld
+            voor <strong>[jouw voorbeeld]</strong>.
+            Ik vind dit handig omdat
+            <strong>[jouw uitleg]</strong>.
+        </p>
+
+    </div>
+
+
+    <div class="media">
+
+        <h3>YouTube-video</h3>
+
+        <p>
+            Ik heb een video over AI in smartphones gekozen
+            omdat daarin voorbeelden worden gegeven van AI
+            die je misschien dagelijks gebruikt zonder dat
+            je het merkt.
+        </p>
+
+        <iframe
+            class="video"
+            src="https://www.youtube-nocookie.com/embed/VIDEO_ID_MOBIEL"
+            title="Video over AI in smartphones"
+            allowfullscreen>
+        </iframe>
+
+    </div>
+
+</section>
+
+
+<!-- ==================================================
+     FOOTER
+     ================================================== -->
+
+<footer>
+
+    <p>
+        © 2026 Mijn ICT Wereld
+    </p>
+
+    <p>
+        Gemaakt door [jouw naam] 💻
+    </p>
+
+    <p>
+        Bedankt voor het bekijken van mijn website!
+    </p>
+
+</footer>
+
+
 </body>
 </html>
