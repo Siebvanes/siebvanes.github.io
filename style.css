@@ -39,6 +39,14 @@ h2 {
     margin-left: 25px;
 }
 
+/* Afbeeldingen netjes laten passen op de pagina */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+}
+
 /* De gewone tekst */
 p {
     margin: 25px;
