@@ -1,54 +1,55 @@
-
+```css
 /* Algemene opmaak van alle pagina's */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f4f8;
-    color: #243047;
-    margin: 0;
-    line-height: 1.6;
+    font-family: Arial, sans-serif; /* Het lettertype van de tekst */
+    background-color: #f0f4f8; /* De achtergrondkleur van de pagina */
+    color: #243047; /* De standaard tekstkleur */
+    margin: 0; /* Verwijdert de standaard buitenmarge */
+    line-height: 1.6; /* Ruimte tussen de tekstregels */
 }
 
-/* Opmaak van het menu bovenaan */
+/* De nav-selector geeft het navigatiemenu zijn opmaak */
 nav {
-    background-color: #172554;
-    padding: 15px;
+    background-color: #172554; /* Donkerblauwe achtergrond van het menu */
+    padding: 15px; /* Ruimte binnen het menu */
 }
 
-/* De links in het menu */
+/* De nav a-selector selecteert links binnen het menu */
 nav a {
-    color: white;
-    text-decoration: none;
-    margin-right: 25px;
-    font-weight: bold;
+    color: white; /* De tekstkleur van de menu-links */
+    text-decoration: none; /* Verwijdert de onderstreping */
+    margin-right: 25px; /* Ruimte rechts van elke link */
+    font-weight: bold; /* Maakt de links vetgedrukt */
 }
 
-/* Kleur wanneer je met je muis over een link gaat */
+/* De hover-selector verandert de linkkleur bij muisaanwijzing */
 nav a:hover {
-    color: #67e8f9;
+    color: #67e8f9; /* Lichtblauwe kleur als je over een link gaat */
 }
 
-/* De grote koppen op de pagina */
+/* De h1-selector bepaalt de opmaak van de grote koppen */
 h1 {
-    color: #4338ca;
-    margin: 25px;
+    color: #4338ca; /* De kleur van de grote koppen */
+    margin: 25px; /* Ruimte rondom de koppen */
 }
 
-/* De tussenkoppen */
+/* De h2-selector bepaalt de opmaak van de tussenkoppen */
 h2 {
-    color: #0f766e;
-    margin-left: 25px;
+    color: #0f766e; /* De kleur van de tussenkoppen */
+    margin-left: 25px; /* Ruimte links van de tussenkoppen */
 }
 
-/* Afbeeldingen netjes laten passen op de pagina */
+/* De img-selector bepaalt de opmaak van afbeeldingen */
 img {
-    max-width: 700px;
-    width: 100%;
-    height: auto;
-    display: block;
-    margin: 20px auto;
+    max-width: 700px; /* Een afbeelding wordt maximaal 700 pixels breed */
+    width: 100%; /* De afbeelding mag de beschikbare breedte gebruiken */
+    height: auto; /* De hoogte past zich aan om de verhouding te behouden */
+    display: block; /* De afbeelding staat op een eigen regel */
+    margin: 20px auto; /* Ruimte boven en onder, en centreren */
 }
 
-/* De gewone tekst */
+/* De p-selector bepaalt de opmaak van gewone alinea's */
 p {
-    margin: 25px;
+    margin: 25px; /* Ruimte rondom de alinea's */
 }
+```
